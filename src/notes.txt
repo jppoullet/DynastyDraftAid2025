@@ -1,0 +1,69 @@
+<div className="flex flex row">
+      {/* All Players List */}
+      <div className="bg-white flex text-left mx-10 w-auto">
+        {players.length > 0 ? (
+          <table>
+            <thead>
+              <tr className="">
+                {Object.keys(slimPlayers[0]).map((key) => (
+                  <th key={key} className="px-4">
+                    {key}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {slimPlayers.map((row, index) => (
+                <tr
+                  key={index}
+                  className="cursor-pointer hover:bg-gray-100 hover:font-bold"
+                  onClick={() => {
+                    draftPlayer(row);
+                  }}
+                >
+                  {Object.values(row).map((value, i) => (
+                    <td key={i} className="px-4">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>Loading data...</p>
+        )}
+      </div>
+      {/* Drafted Players List */}
+      <div className="bg-white text-left mx-10 w-auto">
+        {drafted.length > 0 ? (
+          <table>
+            <thead>
+              <tr className="">
+                {Object.keys(drafted[0]).map((key) => (
+                  <th key={key} className="px-4">
+                    {key}
+                  </th>
+                ))}
+              </tr>
+            </thead>
+            <tbody>
+              {drafted.map((row, index) => (
+                <tr
+                  key={index}
+                  className="cursor-pointer hover:bg-gray-100 hover:font-bold"
+                >
+                  {Object.values(row).map((value, i) => (
+                    <td key={i} className="px-4">
+                      {value}
+                    </td>
+                  ))}
+                </tr>
+              ))}
+            </tbody>
+          </table>
+        ) : (
+          <p>Loading data...</p>
+        )}
+      </div>
+    </div>
